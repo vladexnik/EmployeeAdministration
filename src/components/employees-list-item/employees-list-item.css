@@ -1,6 +1,15 @@
+
 .list-group-item {
+    display: flex;
+    justify-content: space-between;
     padding: 15px 20px;
-    border-bottom: 1px solid #3d5a80;
+    border-bottom: 1px solid #ccdef5;
+}
+
+.threeButtons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .list-group-item:last-child {
@@ -47,9 +56,21 @@
     color: #FFD700;
     transition: 0.3s all;
     transform: translateX(30px);
-    opacity: 0;
+    opacity: 1;
 }
 
+.list-group-item .bi-headphones{
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    font-size: 16px;
+    color: black;
+    transition: 0.3s all;   
+    transform: translateX(30px);
+    opacity: 0;
+    cursor: pointer;
+}
 .list-group-item.like .fa-star {
     opacity: 1;
     transform: translateX(0px);

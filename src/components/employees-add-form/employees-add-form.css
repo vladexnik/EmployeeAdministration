@@ -9,9 +9,11 @@
 
 .add-form {
     margin-top: 20px;
+    display: flex;
 }
 
 .add-form input {
     width: 350px;
     margin-right: 20px;
 }
+

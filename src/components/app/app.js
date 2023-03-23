@@ -7,6 +7,18 @@ import EmployeesAddForm from '../employees-add-form/employees-add-form';
 import './app.css';
 
 function App(){
+
+  // let cookie=document.querySelector('.fas fa-cookie');
+  // cookie.addEventListener('click', ()=>{
+  //   {className=""}
+  // })  
+  const data=[
+    {name: 'Frank L.' , salary: 900, increase: false},
+    {name: 'Kai Al' , salary: 1100, increase: true},
+    {name: 'Qwurt M' , salary: 34200, increase:false }
+  ];
+
+
   return (
     <div className='app'>
         <AppInfo/>
@@ -15,6 +27,10 @@ function App(){
             <SearchPanel/>
             <AppFilter/>
         </div>
+
+        <EmployeesList data={data}/>
+
+        <EmployeesAddForm/>
         
     </div>
 

@@ -1,15 +1,36 @@
+import './employees-list-item.css';
 
+const EmployeesListItem = ({name, salary, increase}) => {
+    
+    let classNames="list-group-item";
+    if(increase){
+        classNames+=' increase';
+    }
 
-const EmployeesListItem = () => {
+    // let cookie=document.querySelectorAll('.fas fa-cookie');
+    // cookie.addEventListener('click',()=>{ 
+    //     return 
+    //      if(cookie===false){
+    //     classNames+=' increase'; }
+    // })
+
     return (
-        <li classname="employees-list-item">
-            <span className="nameEmployee"> Vatson Bert</span>
+        <li className={classNames}>
+            <span className="list-group-item-label"> {name}</span>
+            <input type="text" className='list-group-item-input' defaultValue={salary+'$'}/>
             <div className="threeButtons">
-                <button type="button" className='delete'>
-
+                <button type="button" 
+                    className="btn-cookie btn-sm">
+                    <i className="fas fa-cookie"></i>
                 </button>
+                <button type="button" 
+                    className="btn-trash btn-sm">
+                    <i className="fas fa-trash"></i>
+                </button>
+                <i className="fas fa-star"></i>
             </div>
         </li>
     )
 }   
 
+export default EmployeesListItem;
