@@ -13,9 +13,9 @@ function App(){
   //   {className=""}
   // })  
   const data=[
-    {name: 'Frank L.' , salary: 900, increase: false},
-    {name: 'Kai Al' , salary: 1100, increase: true},
-    {name: 'Qwurt M' , salary: 34200, increase:false }
+    {name: 'Frank L.' , salary: 900, increase: false, id: 1},
+    {name: 'Kai Al' , salary: 1100, increase: true, id: 2},
+    {name: 'Qwurt M' , salary: 34200, increase:false, id: 3 }
   ];
 
 

@@ -56,7 +56,7 @@
     color: #FFD700;
     transition: 0.3s all;
     transform: translateX(30px);
-    opacity: 1;
+    opacity: 0;
 }
 
 .list-group-item .bi-headphones{
