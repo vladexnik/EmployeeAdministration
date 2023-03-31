@@ -8,6 +8,8 @@ import EmployeesAddForm from '../employees-add-form/employees-add-form';
 
 import './app.css';
 
+import nextId from 'react-id-generator';
+
 class App extends Component{
 
     constructor(props){
@@ -21,6 +23,24 @@ class App extends Component{
       }
     }
 
+
+    addItem=(name,salary)=>{
+      const newItem={
+        name,
+        salary,
+        increase: false,
+        id: nextId('HELP')
+      }
+
+      this.setState(({data})=>{
+        let newArr=[...data,newItem];
+        return {
+          data: newArr
+        }
+      })
+    }
+
+
     deleteItem=(id)=>{
         this.setState(({data})=>{
           const index=data.findIndex(elem=>elem.id==id);
@@ -33,10 +53,16 @@ class App extends Component{
           const newArr2=data.filter(item=> item.id!==id); //2sposob
           return {
             data: newArr2
-          }
-          
+          }  
         })
-       
+    }
+
+    onToggleIncrease=(id)=>{
+      console.log(`increse ${id}`)
+    }
+
+    onToggleRise=(id)=>{
+      console.log(`rise ${id}`)
     }
 
     render(){
@@ -50,9 +76,12 @@ class App extends Component{
             </div>
     
             <EmployeesList data={this.state.data}
-            onDelete={this.deleteItem}/>
+            onDelete={this.deleteItem}
+            onToggleIncrease={this.onToggleIncrease}
+            onToggleRise={this.onToggleRise}/>
     
-            <EmployeesAddForm/>
+            <EmployeesAddForm
+            onAdd={this.addItem}/>
             
         </div>
     

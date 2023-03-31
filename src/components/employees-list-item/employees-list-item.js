@@ -11,6 +11,8 @@ class EmployeesListItem extends Component {
         }
     }
 
+
+    // уже не нужные
     onIncrease =()=>{
         this.setState(state=>({
             increase: !state.increase
@@ -22,9 +24,11 @@ class EmployeesListItem extends Component {
             rise: !state.rise
         }))
     }
+    //
+
 
    render(){
-    const {name,salary,onDelete}=this.props;
+    const {name,salary,onDelete, onToggleIncrease, onToggleRise}=this.props;
     
     const {increase}=this.state;
     let classNames="list-group-item";
@@ -45,13 +49,16 @@ class EmployeesListItem extends Component {
     return (
         <li className={classNames}>
             <span className="list-group-item-label"
-            onClick={this.addLike}> {name}
+            // onClick={this.addLike}> // было
+            onClick={onToggleRise}>
+            {name}
             </span>
             <input type="text" className='list-group-item-input' defaultValue={salary+'$'}/>
             <div className="threeButtons">
                 <button type="button" 
                     className="btn-cookie btn-sm"
-                    onClick={this.onIncrease}>
+                    // onClick={this.onIncrease}> // было
+                    onClick={onToggleIncrease}>
                     <i className="fas fa-cookie"></i>
                 </button>
 

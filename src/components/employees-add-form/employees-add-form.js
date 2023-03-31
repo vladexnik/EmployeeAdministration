@@ -15,12 +15,24 @@ class EmployeesAddForm extends Component{
             [e.target.name]: e.target.value
         })
     }
-    
+
+    onSubmit = (e) => {
+        e.preventDefault(); // для отправки формы, е - синтетическое событие
+        this.props.onAdd(this.state.name, this.state.salary);
+        
+        // устанавливает значения после сабмита
+        this.setState({
+            name: '',
+            salary: ''
+        })
+        
+    }
     render(){
         return(
             <div className="app-add-form">
                 <h3>Добавьте нового сотрудника</h3>
-                <form className="add-form">
+                <form className="add-form"
+                onSubmit={this.onSubmit}>
                     {/* управляемые компоненты value={} */}
                     <input type="text" 
                         className="form-control"
@@ -35,7 +47,8 @@ class EmployeesAddForm extends Component{
                         value={this.state.salary}
                         onChange={this.onValueChange}/>
                     <button type="submit" 
-                        className="btn btn-outline-light">Добавить</button>
+                        className="btn btn-outline-light"
+                        >Добавить</button>
                 </form>
                
             </div>
