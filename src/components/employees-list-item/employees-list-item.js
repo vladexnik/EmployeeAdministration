@@ -28,15 +28,15 @@ class EmployeesListItem extends Component {
 
 
    render(){
-    const {name,salary,onDelete, onToggleIncrease, onToggleRise}=this.props;
+    const {name,salary,onDelete, onToggleIncrease, onToggleRise,increase,rise}=this.props;
     
-    const {increase}=this.state;
+    // const {increase}=this.state;
     let classNames="list-group-item";
     if(increase){
         classNames+=' increase';
     }
 
-    const {rise}=this.state;
+    // const {rise}=this.state;
     if(rise){
         classNames+=' like'
     }
