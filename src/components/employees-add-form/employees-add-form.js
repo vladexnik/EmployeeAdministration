@@ -18,6 +18,7 @@ class EmployeesAddForm extends Component{
 
     onSubmit = (e) => {
         e.preventDefault(); // для отправки формы, е - синтетическое событие
+        if(this.state.name != '' && this.state.salary>100) {
         this.props.onAdd(this.state.name, this.state.salary);
         
         // устанавливает значения после сабмита
@@ -25,6 +26,8 @@ class EmployeesAddForm extends Component{
             name: '',
             salary: ''
         })
+        }
+        else return;
         
     }
     render(){

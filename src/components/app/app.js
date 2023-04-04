@@ -19,8 +19,11 @@ class App extends Component{
           {name: 'Frank L.' , salary: 900, increase: false, rise: true, id: 1},
           {name: 'Kai Al' , salary: 1100, increase: true, rise: false, id: 2},
           {name: 'Qwurt M' , salary: 34200, increase:false, rise: false, id: 3 }
-        ]
+        ],
+        term: '',
+        filter: 'rise'
       }
+      
     }
 
 
@@ -45,6 +48,7 @@ class App extends Component{
     deleteItem=(id)=>{
         this.setState(({data})=>{
           const index=data.findIndex(elem=>elem.id==id);
+
           // data.splice(index,1); неправильно т к напрямую state нельзя менять
 
           // const before=data.slice(0,index); // 1sposob
@@ -91,20 +95,64 @@ class App extends Component{
     }))
     }
 
+
+
+    searchEmp=(items, term)=>{
+      if (term.length===0){
+        return items;
+      }
+
+      return items.filter(item=>{
+        return item.name.indexOf(term)> -1; // совпадения item из data и строки term
+      })
+    } 
     
+    onUpdateSearch=(term)=>{ // метод для поднятия наверх // поднятие лок сост-ия родителю
+      this.setState({term: term});
+    }
+    
+
+   
+    // onFilter1k=()=>{
+    //     this.setState(({data})=>({ 
+    //       data: data.find(item=>{return item.salary>1000})
+    //     }))
+    //     console.log('enter')
+    // }
+
+    filterPost=(items,filter)=>{
+      switch(filter){
+        case 'rise': 
+          return items.filter(item=> item.rise);
+        case 'more1k':
+          return items.filter(item=> item.salary>1000);
+        default: 
+          return items;
+      }
+    }
+
+    onfilterSelect=(filter)=>{  // изменение в тек сост-ии фильтра
+      this.setState({filter});
+    }
+    
+
     render(){
+      const {data,term,filter}=this.state;
       const empls=this.state.data.length;
       const increaseEmpls=this.state.data.filter(item=> item.increase).length;
+
+      const visibleData=this.filterPost(this.searchEmp(data,term), filter); // отфильтров массив по поиску this.searchEmp(data,term) // затем фильрация по 3ём
+
       return (
         <div className='app'>
             <AppInfo employees={empls} increased={increaseEmpls}/>
     
             <div className="search-panell">
-                <SearchPanel/>
-                <AppFilter/>
+                <SearchPanel onUpdateSearch={this.onUpdateSearch}/>
+                <AppFilter filter={filter} onfilterSelect={this.onfilterSelect}/>
             </div>
     
-            <EmployeesList data={this.state.data}
+            <EmployeesList data={visibleData}
             onDelete={this.deleteItem}
             onToggleIncrease={this.onToggleIncrease}
             onToggleRise={this.onToggleRise}/>
