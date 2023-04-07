@@ -50,7 +50,9 @@ class EmployeesListItem extends Component {
         <li className={classNames}>
             <span className="list-group-item-label"
             // onClick={this.addLike}> // было
-            onClick={onToggleRise}>
+            onClick={onToggleRise}
+            // style={{fontSize: 40, color: 'red', WebkitTransition: 'all', msTransition: 'all' }}
+            >
             {name}
             </span>
             <input type="text" className='list-group-item-input' defaultValue={salary+'$'}/>

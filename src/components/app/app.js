@@ -21,7 +21,7 @@ class App extends Component{
           {name: 'Qwurt M' , salary: 34200, increase:false, rise: false, id: 3 }
         ],
         term: '',
-        filter: 'rise'
+        filter: 'all'
       }
       
     }
@@ -47,7 +47,7 @@ class App extends Component{
 
     deleteItem=(id)=>{
         this.setState(({data})=>{
-          const index=data.findIndex(elem=>elem.id==id);
+          const index=data.findIndex(elem=>elem.id===id);
 
           // data.splice(index,1); неправильно т к напрямую state нельзя менять
 
